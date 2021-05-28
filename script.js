@@ -25,19 +25,28 @@ for (let i = 0; i < 9; i++) {
     divHour[i].append(hourEl[i]);
     rootEl.append(divHour[i]);
 
-    divTimeFrame[i] = $('<div>');
-    divTimeFrame[i].addClass('col-12 col-md-6 col-lg-6 ' + timeFrame[0]);
-    eventEl[i] = $('<h1>');
-    eventEl[i].text('present');
+    // divTimeFrame[i] = $('<div>');
+    // divTimeFrame[i].addClass('col-12 col-md-6 col-lg-6 ' + timeFrame[0]);
+  
+    eventEl[i] = $('<textarea>');
+    eventEl[i].addClass('col-12 col-md-6 col-lg-6 ' + timeFrame[0]);
 
-    divTimeFrame[i].append(eventEl[i]);
-    rootEl.append(divTimeFrame[i]);
+    //divTimeFrame[i].append(eventEl[i]);
+    rootEl.append(eventEl[i]);
 
-    divSave[i] = $('<div>');
-    divSave[i].addClass('class="col-12 col-md-6 col-lg-3 saveBtn bi bi-save2');
+    //divSave[i] = $('<div>');
+    //divSave[i].addClass('class="col-12 col-md-6 col-lg-3 ');
+    btnSav[i] = $('<button>');
+    btnSav[i].addClass('saveBtn bi bi-save2 col-12 col-md-6 col-lg-3');
+    
     iSave[i] = $('<i>');
 
     iSave[i].attr('style', 'text-align: left; font-size: small');
-    divSave[i].append(iSave);
-    rootEl.append(divSave[i]);
+ 
+    btnSav[i].append(iSave[i]);
+    //divSave[i].append(btnSav[i]);
+ 
+    rootEl.append(btnSav[i]);
 }
+
+
