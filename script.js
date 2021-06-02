@@ -1,7 +1,7 @@
 var today = moment();
 $("#currentDay").text(today.format("dddd, MMMM Do"));
 
-
+               //   0        1           2
 var timeFrame = ['past', 'present', 'future'];
 
 var rootEl = $('#root');
@@ -39,21 +39,27 @@ for (let i = 0; i < 9; i++) {
     //    if (eventEl[i].value != null || eventEl[i].value != '') {
     //   eventEl[i].val(localStorage.getItem(taId));
 
-    var eventHour = moment().set('hour', startHour - 1).format('h:m')
-    var nowHour = today.hour();
-    console.log(eventHour)
+    var eventHour = moment().set('hour', startHour - 1);//.format('h:m')
+    var nowHour = moment();//.format('h:m');
+    console.log('The event happened at: ' + eventHour + '.  The current time is: ' + nowHour)
+    
     // now
-    console.log('The difference is ' + moment().diff(eventHour, 'hours'));
-    if (moment().diff(eventHour, 'hours') < 0) {
-        eventEl[i].addClass('col-12 col-md-6 col-lg-6 ' + timeFrame[0]);
-        console.log('event is today or in future ' + eventHour);
-    } else if (moment().diff(eventHour, 'hours') > 0) {
-        eventEl[i].addClass('col-12 col-md-6 col-lg-6 ' + timeFrame[2]);
+    // moment("20111031", "YYYYMMDD").fromNow(); console.log('The difference is ' + moment().diff(eventHour, 'hours'));
+    console.log('The difference is ' + moment(eventHour, 'h').fromNow()) ;
+    
+    var diff = nowHour.diff(eventHour, 'hours') ;
+    console.log(diff);
+
+    if (moment().diff(eventHour, 'hours') > 0) {
+        eventEl[i].addClass('col-12 col-md-6 col-lg-6 ' + timeFrame[0]); // past
         console.log('event is in the past ' + eventHour);
+    } else if (moment().diff(eventHour, 'hours') < 0) {
+        eventEl[i].addClass('col-12 col-md-6 col-lg-6 ' + timeFrame[2]);// future
+        console.log('event is today or in future ' + eventHour);
     }
-    else if (moment().diff(eventHour, 'hours') === 0)
-        eventEl[i].addClass('col-12 col-md-6 col-lg-6 ' + timeFrame[1]);
-    //  }
+    else if (moment().diff(eventHour, 'hours') == 0)
+        eventEl[i].addClass('col-12 col-md-6 col-lg-6 ' + timeFrame[1]); // now
+    
 
     //divTimeFrame[i].append(eventEl[i]);
     rootEl.append(eventEl[i]);
